@@ -1,12 +1,13 @@
 import React from "react";
-import HomeBannerImg from "../../assets/HomeBanner.jpg";
+// import HomeBannerImg from "../../assets/HomeBanner.jpg";
+import BookBanner from "../../assets/BookUnsplash.jpg";
 import styles from "./HomeBanner.module.css";
 
 const HomeBanner = () => {
   return (
     <img
       className={styles["home-banner"]}
-      src={HomeBannerImg}
+      src={BookBanner}
       alt="Home banner.."
     />
   );

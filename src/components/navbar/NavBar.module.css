@@ -4,8 +4,8 @@
   align-items: center;
   height: 56px;
   z-index: 1000;
-  /* background: linear-gradient(to right, #4776e6, #8e54e9); */
-  background-color: black;
+  /* background-color: #4285f4; */
+  background-color: #5600e8;
 }
 
 .nav__container {
@@ -18,10 +18,15 @@
 }
 
 .logo__text {
-  text-decoration: white;
+  text-decoration: none;
   color: white;
   font-size: 1.5rem;
   padding: 0px;
+}
+
+.logo__text :hover {
+  background-color: #5600e8;
+  color: #fff;
 }
 
 .menu__icon {
@@ -65,7 +70,7 @@
 }
 
 @media (min-width: 728px) and (max-width: 1100px) {
-  .logo {
+  .logo__text {
     margin-left: 10px;
   }
 }
@@ -108,7 +113,7 @@
     font-size: 15px;
   }
 
-  .logo {
+  .logo__text {
     margin-left: 10px;
   }
 }

@@ -9,25 +9,44 @@ const Books = () => {
 
   const fetchMovies = async () => {
     const res = await axios.get(
-      "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=Z9LgWgjSDAtoIEwNXSy7mOWiGeuqZJrk"
+      `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_BOOKS_API_KEY}`
     );
     const books = res.data.results.books;
     setBooksData(books);
-    console.log(booksData);
+    // console.log(books);
   };
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [booksData]);
 
   return (
     <div className={styles["page__container"]}>
-      <div className="text-center">
-        {booksData.map((book, index) => {
-          return <ItemCard index={index} title={book.title}></ItemCard>;
-        })}
+      <div>
+        <span className={styles["books-intro"]}>
+          Books{" "}
+          <span>
+            <small className={styles["books-intro-tagline"]}>
+              curated for you!!
+            </small>
+          </span>
+        </span>
       </div>
-      <ItemCard />
+      <div className={styles["books-list"]}>
+        {booksData.length > 0 &&
+          booksData.map((book, index) => {
+            return (
+              <ItemCard
+                key={index}
+                title={book.title}
+                author={book.author}
+                image={book.book_image}
+                desc={book.description}
+                publisher={book.publisher}
+              ></ItemCard>
+            );
+          })}
+      </div>
     </div>
   );
 };

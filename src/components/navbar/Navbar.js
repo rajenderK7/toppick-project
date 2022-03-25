@@ -16,7 +16,7 @@ function NavBar() {
               to="/"
               onClick={closeMobileMenu}
             >
-              TopPick
+              <b>TopPick</b>
             </Link>
           </div>
           <div className={styles["menu__icon"]} onClick={handleMenuIcon}>

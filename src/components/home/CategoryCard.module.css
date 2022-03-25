@@ -10,6 +10,7 @@
   display: flex;
   font-size: 100px;
   margin: 10px auto;
+  color: #0a5d9f;
 }
 
 .summary {
@@ -19,7 +20,7 @@
 }
 
 .summary h2 {
-  color: #000;
+  color: black;
   font-size: 2rem;
   margin-top: 0;
 }
