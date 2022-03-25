@@ -1,0 +1,48 @@
+.row__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%;
+}
+
+.movie__icon {
+  display: flex;
+  font-size: 100px;
+  margin: 10px auto;
+}
+
+.summary {
+  width: 35rem;
+  color: grey;
+  padding: 0px 1rem 5px 1rem;
+}
+
+.summary h2 {
+  color: #000;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+@media (max-width: 728px) {
+  .row__container {
+    display: block;
+    text-align: center;
+  }
+
+  .movie__icon {
+    font-size: 75px;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .summary {
+    text-align: start;
+    width: 100%;
+  }
+
+  .summary h2 {
+    font-size: 1.2rem;
+  }
+}
