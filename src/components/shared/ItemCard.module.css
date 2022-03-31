@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
-  background-color: #5f17db;
+  background-color: #3a445c;
   color: white;
   border-radius: 8px;
   box-shadow: 5px 4px 10px grey;
@@ -44,12 +44,22 @@ span {
 }
 
 .item-card:hover {
-  background-color: white;
-  color: black;
+  background-color: #5f17db;
+  color: white;
+}
+
+.item__details {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 @media (max-width: 728px) {
   .item-card {
     width: 46%;
   }
+}
+
+.item__navigate {
+  text-decoration: none;
 }

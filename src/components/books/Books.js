@@ -13,12 +13,12 @@ const Books = () => {
     );
     const books = res.data.results.books;
     setBooksData(books);
-    // console.log(books);
+    console.log(books);
   };
 
   useEffect(() => {
     fetchMovies();
-  }, [booksData]);
+  }, []);
 
   return (
     <div className={styles["page__container"]}>
@@ -38,6 +38,7 @@ const Books = () => {
             return (
               <ItemCard
                 key={index}
+                id={index}
                 title={book.title}
                 author={book.author}
                 image={book.book_image}

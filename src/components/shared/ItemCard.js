@@ -1,9 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
 
 const ItemCard = (props) => {
   return (
-    <div className={styles["item-card"]}>
+    <Link
+      to={`/books/${props.id}`}
+      className={`${styles["item__navigate"]} ${styles["item-card"]}`}
+    >
       <img
         className={styles["poster"]}
         src={props.image}
@@ -19,8 +23,7 @@ const ItemCard = (props) => {
         <small>Publisher:</small>{" "}
         <span className={styles["auth"]}>{props.publisher}</span>
       </span>
-      {/* <small className={styles["desc"]}>{props.desc}</small> */}
-    </div>
+    </Link>
   );
 };
 
