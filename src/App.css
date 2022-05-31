@@ -3,3 +3,15 @@
   margin: 0;
   padding: 0;
 }
+
+@font-face {
+  font-family: "Headings";
+  src: local("SF-Pro-Display-Regular"),
+    url("./fonts/SF-Pro-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Texts";
+  src: local("SF-Pro-Text-Regular"),
+    url("./fonts/SF-Pro-Text-Regular.otf") format("opentype");
+}

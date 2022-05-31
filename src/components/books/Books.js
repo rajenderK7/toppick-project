@@ -1,51 +1,67 @@
 import styles from "./Books.module.css";
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useEffect } from "react";
 import ItemCard from "../shared/ItemCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { allBooks, resetBooksState } from "../../features/books/booksSlice";
+import LoadingSpinner from "../shared/LoadingSpinner";
+import { resetAuthState } from "../../features/auth/authSlice";
 
 const Books = () => {
-  const [booksData, setBooksData] = useState([]);
+  const authState = useSelector((state) => state.auth);
 
-  const fetchMovies = async () => {
-    const res = await axios.get(
-      `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_BOOKS_API_KEY}`
-    );
-    const books = res.data.results.books;
-    setBooksData(books);
-    console.log(books);
+  const booksState = useSelector((state) => state.books);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const fetchBooks = async () => {
+    dispatch(allBooks());
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    if (!authState.user) {
+      navigate("/login");
+      dispatch(resetAuthState());
+      return;
+    }
+    if (booksState.books.length === 0) {
+      fetchBooks();
+      dispatch(resetBooksState());
+    } else {
+      dispatch(resetBooksState());
+    }
+  }, [authState.user]);
+
+  if (booksState.isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (booksState.message === "error") {
+    return (
+      <div className="text-center text-primary">
+        <h1>Something went wrong...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className={styles["page__container"]}>
       <div>
         <span className={styles["books-intro"]}>
-          Books{" "}
+          Top rated Books{" "}
           <span>
-            <small className={styles["books-intro-tagline"]}>
-              curated for you!!
-            </small>
+            <small className={styles["books-intro-tagline"]}>for you!!</small>
           </span>
         </span>
       </div>
+      {booksState.isLoading && <LoadingSpinner />}
       <div className={styles["books-list"]}>
-        {booksData.length > 0 &&
-          booksData.map((book, index) => {
-            return (
-              <ItemCard
-                key={index}
-                id={index}
-                title={book.title}
-                author={book.author}
-                image={book.book_image}
-                desc={book.description}
-                publisher={book.publisher}
-              ></ItemCard>
-            );
+        {booksState.books.length > 0 &&
+          booksState.books.map((_, index) => {
+            return <ItemCard key={index} id={index}></ItemCard>;
           })}
       </div>
     </div>

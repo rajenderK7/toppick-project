@@ -1,7 +1,20 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
 import HomeBanner from "./HomeBanner";
 
 const Home = () => {
+  const { user } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
     <div>
       <HomeBanner />
