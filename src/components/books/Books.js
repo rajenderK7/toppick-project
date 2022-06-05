@@ -26,11 +26,8 @@ const Books = () => {
       navigate("/login");
       dispatch(resetAuthState());
       return;
-    }
-    if (booksState.books.length === 0) {
-      fetchBooks();
-      dispatch(resetBooksState());
     } else {
+      fetchBooks();
       dispatch(resetBooksState());
     }
   }, [authState.user]);
@@ -60,8 +57,10 @@ const Books = () => {
       {booksState.isLoading && <LoadingSpinner />}
       <div className={styles["books-list"]}>
         {booksState.books.length > 0 &&
-          booksState.books.map((_, index) => {
-            return <ItemCard key={index} id={index}></ItemCard>;
+          booksState.books.map((book, index) => {
+            return (
+              <ItemCard key={index} id={index} db_id={book._id}></ItemCard>
+            );
           })}
       </div>
     </div>

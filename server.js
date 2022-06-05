@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userApp = require("./api/userApi");
 const booksApp = require("./api/booksApi");
+const postApp = require("./api/postApi");
 const path = require("path");
+const commentApp = require("./api/commentApi");
 
 require("dotenv").config();
 
@@ -22,6 +24,8 @@ app.use(express.static(path.join(__dirname, "./build")));
 // redirect to target api
 app.use("/user-api", userApp);
 app.use("/books-api", booksApp);
+app.use("/post-api", postApp);
+app.use("/comment-api", commentApp);
 
 // dealing with page refresh
 // send build/index.html

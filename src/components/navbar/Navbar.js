@@ -4,6 +4,7 @@ import styles from "./NavBar.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../features/auth/authSlice";
+import { removeBooks } from "../../features/books/booksSlice";
 
 function NavBar() {
   const [menuIcon, setMenuIcon] = useState(false);
@@ -16,6 +17,7 @@ function NavBar() {
   const navigate = useNavigate();
 
   const onLogoutHandler = () => {
+    dispatch(removeBooks());
     dispatch(logoutUser());
     navigate("/");
   };

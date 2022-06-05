@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
 
-const ItemCard = ({ id }) => {
+const ItemCard = ({ id, db_id }) => {
+  // This component is only responsible for showing
+  // the book in books page
   const { books } = useSelector((state) => state.books);
   return (
     <Link
-      to={`/books/${id}`}
+      to={`/books/${db_id}`}
       className={`${styles["item__navigate"]} ${styles["item-card"]}`}
     >
       <img

@@ -30,6 +30,9 @@ const booksSlice = createSlice({
       state.isError = false;
       state.message = "";
     },
+    removeBooks: (state) => {
+      state.books = null;
+    },
   },
   extraReducers: {
     [allBooks.pending]: (state) => {
@@ -52,6 +55,6 @@ const booksSlice = createSlice({
   },
 });
 
-export const { resetBooksState } = booksSlice.actions;
+export const { resetBooksState, removeBooks } = booksSlice.actions;
 
 export default booksSlice.reducer;
